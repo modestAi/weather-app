@@ -36,9 +36,11 @@ const WrapperCard: React.FC = (): JSX.Element => {
     setShimmerState(true);
     fetch(`http://localhost:3001/api/weather/${locationState.latitude}/${locationState.longitude}`)
       .then((response) => response.json())
-      .then((e) => setDataState({ res: getData(e.weeklyArray, e.location) }))
+      .then((e) => {
+        setDataState({ res: getData(e.weeklyArray, e.location) });
+            setShimmerState(false);
+      })
       .catch(() => setShimmerState(true));
-    setShimmerState(false);
   };
 
   useEffect(() => {

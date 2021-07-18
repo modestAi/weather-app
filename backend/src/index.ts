@@ -15,7 +15,7 @@ app.get("/api/weather/:lat/:long", async (req: Request, res: Response) => {
   try {
     const weatherAxiosResponse = await axios.get(queryString);
     const response = getFullResponse(weatherAxiosResponse);
-    setTimeout(() => res.send(response), 5000);
+    res.send(response);
   } catch (error) {
     res.status(400).send({ error: "An error has occurred" });
   }

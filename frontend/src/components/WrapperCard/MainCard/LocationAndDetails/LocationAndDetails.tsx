@@ -18,7 +18,7 @@ const LocationAndDetails: React.FC<LocationAndDetailsProps> = (props): JSX.Eleme
   if (!shouldShimmer) {
     return (
       <StyledUl>
-        <li>{/* {props.locationAndDetails.city}, {props.locationAndDetails.state} */}</li>
+        {/* <li>{props.locationAndDetails.city}, {props.locationAndDetails.state}</li> */}
         <li>
           {props.locationAndDetails.day}, {props.locationAndDetails.time}
         </li>

@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { usePreferred } from "../../../../hooks/usePreferred";
-import { toFahrenheit } from "../../../../utils/unitConverters/temperatureConverter";
+import { getPreferredUnitTemp } from "../../../../utils/CorrectUnitGetter";
 import { SkeletonLoaderContext } from "../../WrapperCard";
 
 import { CenteredPara, FlexDiv, InlinePara, Image, RawFlexDiv, NoWrapDiv } from "./SmallCard.style";
@@ -25,36 +25,34 @@ const SmallCard: React.FC<SmallCardProps> = ({
   onClickHandler,
   selectedCard,
 }): JSX.Element => {
+  
   const { preferredUnit } = usePreferred();
 
-  let resultMaxTemp = preferredUnit === "metric" ? maxTemp : toFahrenheit(maxTemp);
-  resultMaxTemp = Math.trunc(resultMaxTemp);
-  let resultMinTemp = preferredUnit === "metric" ? minTemp : toFahrenheit(minTemp);
-  resultMinTemp = Math.trunc(resultMinTemp);
+  let resultMaxTemp = getPreferredUnitTemp(maxTemp, preferredUnit);
+  let resultMinTemp = getPreferredUnitTemp(minTemp, preferredUnit);
 
   const shouldShimmer = useContext(SkeletonLoaderContext);
   if (!shouldShimmer) {
     return (
-        <FlexDiv
-          isSelected={listId === selectedCard}
-          onClick={() => {
-            onClickHandler(listId);
-          }}
-        >
-          <RawFlexDiv>
-            <CenteredPara>{day.substring(0, 3)}</CenteredPara>
-            <div>
-              <Image src={icon} alt="None" />
-            </div>
-          </RawFlexDiv>
-          <NoWrapDiv>
-            <div>
-              <InlinePara primary>{resultMaxTemp}&nbsp;</InlinePara>
-              <InlinePara>{resultMinTemp}</InlinePara>
-            </div>
-          </NoWrapDiv>
-        </FlexDiv>
-      
+      <FlexDiv
+        isSelected={listId === selectedCard}
+        onClick={() => {
+          onClickHandler(listId);
+        }}
+      >
+        <RawFlexDiv>
+          <CenteredPara>{day.substring(0, 3)}</CenteredPara>
+          <div>
+            <Image src={icon} alt="None" />
+          </div>
+        </RawFlexDiv>
+        <NoWrapDiv>
+          <div>
+            <InlinePara primary>{resultMaxTemp}&nbsp;</InlinePara>
+            <InlinePara>{resultMinTemp}</InlinePara>
+          </div>
+        </NoWrapDiv>
+      </FlexDiv>
     );
   } else {
     return <SmallCardSkeletonLoader />;
