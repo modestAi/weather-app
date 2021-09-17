@@ -25,7 +25,7 @@ export const OutermostDiv = styled.div`
   justify-content: space-between;
   border-radius: 1rem;
   background-color: hsla(360, 100%, 100%, 1%);
-  margin: 0.5rem;
+  margin: 2rem;
   box-shadow: #5cdb95 -4px 3px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 `
 

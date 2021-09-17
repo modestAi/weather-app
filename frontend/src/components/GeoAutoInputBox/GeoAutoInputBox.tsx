@@ -144,7 +144,6 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation, placeN
               index={i}
               isHighlighted={highlightState}
               placeName={e.placeName}
-              coordinates={{ lat: e.coordinates.lat, long: e.coordinates.long }}
               key={i + e.placeName}
               onClickHandler={handleSuggestionClick}
             />

@@ -19,10 +19,12 @@ export const Input = styled.input`
   transition: border 0.1s ease-in-out;
   padding: 0.3rem 0.5rem;
   border: 0.1rem solid #5cdb95bc;
-   &:focus, &:hover {
+  background-color: rgb(255, 255, 255, 0.03);
+  &:focus,
+  &:hover {
+    background-color: rgb(255, 255, 255, 0.06);
     border: 0.1rem solid #5cdb95;
   }
-  background-color: hsla(360, 100%, 100%, 3%);
 `;
 
 export const FlexColumnSuggestionListDiv = styled.div`
@@ -33,8 +35,10 @@ export const FlexColumnSuggestionListDiv = styled.div`
   flex-direction: column;
   overflow: hidden scroll;
   font-size: 0.8rem;
-  color: rgb(255, 255, 255, 0.81);
+  color: rgb(255, 255, 255, 0.70);
   max-height: 5rem;
   width: inherit;
   gap: 0;
+  border: solid 1px rgb(255, 255, 255, 0.2);
+  border-top: none;
 `;

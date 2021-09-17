@@ -7,18 +7,17 @@ export const Div = styled.div`
   font-size: inherit;
   padding: 0.1rem 0.2rem;
   color: inherit;
-  border-bottom: solid 0.1rem rgb(255, 255, 255, 0.4);
   &:hover {
-    background-color: rgb(255, 255, 255, 0.03);
+    color: rgb(255, 255, 255, 0.81);
+    background-color: rgb(255, 255, 255, 0.04);
   }
 `;
 
 export const HighlightedDiv = styled.div`
-  background-color: rgb(255, 255, 255, 0.03);
+  background-color: rgb(255, 255, 255, 0.04);
   width: inherit;
   cursor: pointer;
+  color: rgb(255, 255, 255, 0.81);
   font-size: inherit;
   padding: 0.1rem 0.2rem;
-  color: inherit;
-  border-bottom: solid 0.1rem #03dac5;
 `;

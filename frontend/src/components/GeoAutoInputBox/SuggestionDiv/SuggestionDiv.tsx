@@ -1,11 +1,10 @@
 import { Div, HighlightedDiv } from "./SuggestionDiv.style";
 
-interface Props {
+interface SuggestionDivProps {
   index: number;
   isHighlighted: number;
   onClickHandler: (index: number) => void;
   placeName: string;
-  coordinates: { lat: number; long: number };
 }
 
 const isDivHighlighted = (highlightedIndex: number, index: number): boolean => {
@@ -15,27 +14,17 @@ const isDivHighlighted = (highlightedIndex: number, index: number): boolean => {
   return false;
 };
 
-const SuggestionDiv = (props: Props): JSX.Element => {
+const SuggestionDiv: React.FC<SuggestionDivProps> = ({
+  index,
+  isHighlighted,
+  placeName,
+  onClickHandler,
+}): JSX.Element => {
   return (
     <>
-      {!isDivHighlighted(props.isHighlighted, props.index) && (
-        <Div
-          onClick={() => {
-            props.onClickHandler(props.index);
-          }}
-        >
-          {props.placeName}
-        </Div>
-      )}
-
-      {isDivHighlighted(props.isHighlighted, props.index) && (
-        <HighlightedDiv
-          onClick={() => {
-            props.onClickHandler(props.index);
-          }}
-        >
-          {props.placeName}
-        </HighlightedDiv>
+      {!isDivHighlighted(isHighlighted, index) && <Div onClick={() => onClickHandler(index)}>{placeName}</Div>}
+      {isDivHighlighted(isHighlighted, index) && (
+        <HighlightedDiv onClick={() => onClickHandler(index)}>{placeName}</HighlightedDiv>
       )}
     </>
   );
