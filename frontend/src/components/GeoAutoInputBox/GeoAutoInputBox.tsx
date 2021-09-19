@@ -1,19 +1,15 @@
 import React, { useEffect, useRef, useState } from "react";
+import { AddressType } from "../../Typings/Typings";
 import { ContainerDiv, FlexColumnSuggestionListDiv, FlexDiv, Input } from "./GeoAutoInputBox.style";
 import SuggestionDiv from "./SuggestionDiv/index";
 
-type Result = {
-  placeName: string;
-  coordinates: { lat: number; long: number };
-}[];
+type Result = AddressType[];
 
-interface GeoAutoInputBoxProps {
-  onNewLocation: (coordinates: { lat: number; long: number }, placeName: string) => void;
-  placeName?: string;
-  coordinates?: { lat: number; long: number };
-}
+type NewLocationFunction =   (Address: AddressType) => void ;
 
-const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation, placeName, coordinates }): JSX.Element => {
+type GeoAutoInputBoxProps = Partial<AddressType> & {onNewLocation: NewLocationFunction};
+
+const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.Element => {
   const [selectedSuggestionIndexState, setSelectedSuggestionIndexState] = useState<{ num: number } | null>(null);
   const [suggestionsState, setSuggestionsState] = useState<{ placesAndCoordinates: Result } | null>(null);
   const [displayState, setDisplayState] = useState(false);
@@ -54,7 +50,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation, placeN
       setInputTextState(() => suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName);
       const coordinates = suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].coordinates;
       const placeName = suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName;
-      onNewLocation(coordinates, placeName);
+      onNewLocation({coordinates, placeName});
     }
   }, [selectedSuggestionIndexState]);
 

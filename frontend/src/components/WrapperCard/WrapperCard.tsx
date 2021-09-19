@@ -7,16 +7,17 @@ import MainCardSkeletonLoader from "./MainCard/MainCardSkeletonLoader";
 import SmallCardContainer from "./SmallCardsContainer/index";
 import SmallCardContainerSkeletonLoader from "./SmallCardsContainer/SmallCardContainerSkeletonLoader";
 import { FlexDiv, MiddleDiv, OutermostDiv, WrapperInnerDiv } from "./WrapperCard.style";
+import { AddressType, SmallCardProps } from "../../Typings/Typings";
 
 export const SkeletonLoaderContext = React.createContext(false);
+
 
 const WrapperCard: React.FC = (): JSX.Element => {
   const [shimmerState, setShimmerState] = useState(false);
   const [locationState, setLocationState] = useState<{ latitude: number; longitude: number }>();
   const [dataState, setDataState] = useState<{ res: DataModel[] }>({ res: [] });
   const [indexState, setIndexState] = useState(0);
-  const [addressState, setAddressState] =
-    useState<{ res: { placeName: string; coordinates: { lat: number; long: number } } }>();
+  const [addressState, setAddressState] = useState<AddressType>();
 
   useEffect(() => {
     (function initUserLocation() {
@@ -33,8 +34,8 @@ const WrapperCard: React.FC = (): JSX.Element => {
 
   useEffect(() => {
     if (addressState) {
-      const latitude = addressState.res.coordinates.lat;
-      const longitude = addressState.res.coordinates.long;
+      const latitude = addressState.coordinates.lat;
+      const longitude = addressState.coordinates.long;
       setLocationState({ latitude, longitude });
     }
   }, [addressState]);
@@ -45,13 +46,11 @@ const WrapperCard: React.FC = (): JSX.Element => {
       fetch(`http://localhost:3001/api/weather/${locationState.latitude}/${locationState.longitude}`)
         .then((response) => response.json())
         .then((e) => {
-          let address = addressState?.res.placeName;
+          let address = addressState?.placeName;
           setDataState({ res: getData(e.weeklyArray, address) });
           setShimmerState(() => false);
         })
-        .catch((error) => {
-          setShimmerState(true);
-        });
+        .catch((error) => setShimmerState(true));
     }
   }, [locationState]);
 
@@ -59,24 +58,17 @@ const WrapperCard: React.FC = (): JSX.Element => {
     setIndexState(index);
   };
 
-  const onNewLocation = (coordinates: { lat: number; long: number }, placeName: string): void => {
-    setAddressState({ res: { placeName, coordinates } });
+  const onNewLocation = (Address: AddressType): void => {
+    setAddressState({ placeName: Address.placeName, coordinates: Address.coordinates });
   };
 
-  const getSmallCardData = (
-    data: DataModel[]
-  ): {
-    day: string;
-    icon: string;
-    maxTemp: number;
-    minTemp: number;
-  }[] => {
-    return data.map((e) => {
+  const getSmallCardData = (data: DataModel[]): SmallCardProps[] => {
+    return data.map((val) => {
       return {
-        day: e.day,
-        icon: e.image,
-        maxTemp: e.maxTemp,
-        minTemp: e.minTemp,
+        day: val.day,
+        icon: val.image,
+        maxTemp: val.maxTemp,
+        minTemp: val.minTemp,
       };
     });
   };
@@ -99,6 +91,7 @@ const WrapperCard: React.FC = (): JSX.Element => {
                 </WrapperInnerDiv>
               </MiddleDiv>
             </OutermostDiv>
+            
           </SkeletonLoaderContext.Provider>
         </FlexDiv>
         )
