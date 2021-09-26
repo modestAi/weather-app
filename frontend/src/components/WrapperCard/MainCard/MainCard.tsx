@@ -31,12 +31,8 @@ const MainCard: React.FC<MainCardProps> = ({ data }): JSX.Element => {
 
   return (
     <FlexDiv>
-      <div>
-        <WeatherDetails data={data} />
-      </div>
-      <div>
-        <LocationAndDetails locationAndDetails={getLocationAndDetails()} />
-      </div>
+      <WeatherDetails data={data} />
+      <LocationAndDetails locationAndDetails={getLocationAndDetails()} />
     </FlexDiv>
   );
 };

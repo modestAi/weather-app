@@ -19,13 +19,9 @@ export const FlexDiv = styled.div<{ isSelected?: boolean }>`
     background-color: transparent;
   }
 
-  /*FIXME: MAKE SMALL CARD CONTAINER NOT OVERRIDE THIS RULE AND SPECIFY INNER SHADOW HERE 
-  INSTEAD OF 3 TIMES*/
   &:hover {
     transform: scale(1.03) perspective(1px);
   }
-
-  /* border: 1px solid white; */
 `;
 
 export const InlinePara = styled.p<{ primary?: boolean }>`

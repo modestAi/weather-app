@@ -7,6 +7,8 @@ interface StyleProps {
   isCircle?: boolean;
   marginBottom?: string;
   borderRadius?: string;
+  padding?: string;
+  margin?: string;
 }
 
 const shimmerAnimationKeyframe = keyframes`
@@ -20,10 +22,12 @@ const shimmerAnimationKeyframe = keyframes`
 
 const StyledSkeleton = styled.div<StyleProps>`
   height: ${(props) => props.height};
-  width: ${(props) => props.width};
+  width: ${(props) => (props.width ? props.width : "auto")};
   border-radius: ${(props) => (props.isCircle ? "50%" : "0px")};
   margin-top: ${(props) => (props.marginTop ? props.marginTop : "0px")};
   margin-bottom: ${(props) => (props.marginBottom ? props.marginBottom : "0px")};
+  padding: ${(props) => (props.padding ? props.padding : "")};
+  margin: ${(props) => (props.margin ? props.margin : "")};
   overflow: hidden;
   position: relative;
   ::before {
@@ -44,10 +48,20 @@ const StyledSkeleton = styled.div<StyleProps>`
   }
 `;
 
-const SkeletonLoader: React.FC<StyleProps> = ({ height, width, isCircle, marginBottom, marginTop }): JSX.Element => {
+const SkeletonLoader: React.FC<StyleProps> = ({
+  height,
+  padding,
+  margin,
+  width,
+  isCircle,
+  marginBottom,
+  marginTop,
+}): JSX.Element => {
   return (
     <StyledSkeleton
       height={height}
+      padding={padding}
+      margin={margin}
       width={width}
       isCircle={isCircle}
       marginBottom={marginBottom}

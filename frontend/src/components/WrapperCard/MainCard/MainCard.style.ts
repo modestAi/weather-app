@@ -13,5 +13,4 @@ export const FlexDiv = styled.div`
   & * {
     background-color: transparent;
   }
-  /* border: solid 5px yellow; */
 `;

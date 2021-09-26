@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
-export const StyledUl = styled.ul`
-  display: inline;
-  padding: 0;
-  margin: 0;
+export const StyledDivParent = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 12rem;
+  align-items: flex-end;
+`;
+
+export const StyledDivChild = styled.div`
+  width: inherit;
+  text-align: right;
+  word-wrap: break-word;
 `;
 
 export const FlexEndDiv = styled.div`

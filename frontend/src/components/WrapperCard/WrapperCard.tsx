@@ -11,7 +11,6 @@ import { AddressType, SmallCardProps } from "../../Typings/Typings";
 
 export const SkeletonLoaderContext = React.createContext(false);
 
-
 const WrapperCard: React.FC = (): JSX.Element => {
   const [shimmerState, setShimmerState] = useState(false);
   const [locationState, setLocationState] = useState<{ latitude: number; longitude: number }>();
@@ -75,27 +74,23 @@ const WrapperCard: React.FC = (): JSX.Element => {
 
   if (dataState.res && dataState.res.length > 0) {
     return (
-      <>
-        <FlexDiv>
-          <SkeletonLoaderContext.Provider value={shimmerState}>
-            <GeoAutoInputBox onNewLocation={onNewLocation} />
-            <OutermostDiv>
-              <MiddleDiv>
-                <WrapperInnerDiv>
-                  <MainCard data={dataState.res[indexState]} />
-                  <SmallCardContainer
-                    onClickProp={handleClick}
-                    data={getSmallCardData(dataState.res)}
-                    currentSelected={indexState}
-                  />
-                </WrapperInnerDiv>
-              </MiddleDiv>
-            </OutermostDiv>
-            
-          </SkeletonLoaderContext.Provider>
-        </FlexDiv>
-        )
-      </>
+      <FlexDiv>
+        <SkeletonLoaderContext.Provider value={shimmerState}>
+          <GeoAutoInputBox onNewLocation={onNewLocation} />
+          <OutermostDiv>
+            <MiddleDiv>
+              <WrapperInnerDiv>
+                <MainCard data={dataState.res[indexState]} />
+                <SmallCardContainer
+                  onClickProp={handleClick}
+                  data={getSmallCardData(dataState.res)}
+                  currentSelected={indexState}
+                />
+              </WrapperInnerDiv>
+            </MiddleDiv>
+          </OutermostDiv>
+        </SkeletonLoaderContext.Provider>
+      </FlexDiv>
     );
   } else {
     return (

@@ -1,7 +1,7 @@
 import React from "react";
 import SkeletonLoader from "../../../SkeletonLoader/SkeletonLoader";
 import MeteorologicalDataSkeletonLoader from "./MeteorologicalData/MeteorologicalDataSkeletonLoader";
-import { FlexDiv, InlinePara } from "./WeatherDetails.style";
+import { FlexDiv, TempPara } from "./WeatherDetails.style";
 
 const WeatherDetailsSkeletonLoader: React.FC = (): JSX.Element => {
   return (
@@ -9,20 +9,19 @@ const WeatherDetailsSkeletonLoader: React.FC = (): JSX.Element => {
       <div>
         <FlexDiv>
           <div>
-            <SkeletonLoader height={"2rem"} width={"2rem"} isCircle={true} />
+            <SkeletonLoader height={"2.5rem"} width={"2.5rem"} isCircle={true} />
           </div>
           <div>
-            <InlinePara>
-              <SkeletonLoader height={"1.5rem"} width={"3rem"} />
-            </InlinePara>
+            <SkeletonLoader height={"2.5rem"} width={"2.5rem"} />
           </div>
-          <div>
-            <SkeletonLoader height={"2rem"} width={"4rem"} borderRadius={"2px"} />
-          </div>
+          <FlexDiv>
+            <SkeletonLoader height={"1.5rem"} width={"3rem"} borderRadius={"2px"} />
+            <SkeletonLoader height={"1.5rem"} width={"3rem"} borderRadius={"2px"} />
+          </FlexDiv>
         </FlexDiv>
       </div>
       <div>
-        <MeteorologicalDataSkeletonLoader></MeteorologicalDataSkeletonLoader>
+        <MeteorologicalDataSkeletonLoader />
       </div>
     </FlexDiv>
   );

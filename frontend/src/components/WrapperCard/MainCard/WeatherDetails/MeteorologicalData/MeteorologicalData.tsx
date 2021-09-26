@@ -4,7 +4,7 @@ import { toMilesPerHour } from "../../../../../utils//unitConverters/speedConver
 import { toFahrenheit } from "../../../../../utils/unitConverters/temperatureConverter";
 import { SkeletonLoaderContext } from "../../../WrapperCard";
 
-import { StyledUl } from "./MeteorologicalData.style";
+import { StyledChildDiv, StyledDiv } from "./MeteorologicalData.style";
 import MeteorologicalDataSkeletonLoader from "./MeteorologicalDataSkeletonLoader";
 
 interface MeteorologicalDataProps {
@@ -28,13 +28,11 @@ const MeteorologicalData: React.FC<MeteorologicalDataProps> = (props): JSX.Eleme
   if (!shouldShimmer) {
     return (
       <div>
-        <StyledUl>
-          <>
-            <li>Humidity: {props.meteorologicalData.humidity}%</li>
-            <li>Wind Speed: {resultantWindSpeed}</li>
-            <li>Feels Like: {resultantFeelsLike}</li>
-          </>
-        </StyledUl>
+        <StyledDiv>
+            <StyledChildDiv>Humidity: {props.meteorologicalData.humidity}%</StyledChildDiv>
+            <StyledChildDiv>Wind Speed: {resultantWindSpeed}</StyledChildDiv>
+            <StyledChildDiv>Feels Like: {resultantFeelsLike}</StyledChildDiv>
+        </StyledDiv>
       </div>
     );
   } else {

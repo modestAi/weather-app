@@ -3,7 +3,7 @@ import { usePreferred } from "../../../../hooks/usePreferred";
 import { toFahrenheit } from "../../../../utils/unitConverters/temperatureConverter";
 import { SkeletonLoaderContext } from "./../../WrapperCard";
 import MeteorologicalData from "./MeteorologicalData/index";
-import { FlexDiv, InlineImg, InlinePara, TransparentButton } from "./WeatherDetails.style";
+import { FlexDiv, InlineImg, TempPara, TransparentButton } from "./WeatherDetails.style";
 import WeatherDetailsSkeletonLoader from "./WeatherDetailsSkeletonLoader";
 
 interface WeatherDetailsProps {
@@ -49,11 +49,11 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = (props): JSX.Element => {
               <InlineImg src={props.data.image} alt="None" />
             </div>
             <div>
-              <InlinePara>
+              <TempPara>
                 {preferredUnit === "metric" ? Math.trunc(temperature) : Math.trunc(toFahrenheit(temperature))}
-              </InlinePara>
+              </TempPara>
             </div>
-            <div>
+            <FlexDiv>
               <TransparentButton onClick={setToMetric} isSelected={preferredUnit === "metric"}>
                 °C
               </TransparentButton>
@@ -61,7 +61,7 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = (props): JSX.Element => {
               <TransparentButton onClick={setToImperial} isSelected={preferredUnit === "imperial"}>
                 °F
               </TransparentButton>
-            </div>
+            </FlexDiv>
           </FlexDiv>
         </div>
         <div>

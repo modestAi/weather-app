@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { SkeletonLoaderContext } from "../../WrapperCard";
-import { StyledUl } from "./LocationAndDetails.style";
+import { StyledDivChild, StyledDivParent } from "./LocationAndDetails.style";
 import LocationAndDetailsSkeletonLoader from "./LocationAndDetailsSkeletonLoader";
 
 interface LocationAndDetailsProps {
@@ -16,13 +16,13 @@ const LocationAndDetails: React.FC<LocationAndDetailsProps> = (props): JSX.Eleme
   const shouldShimmer = useContext(SkeletonLoaderContext);
   if (!shouldShimmer) {
     return (
-      <StyledUl>
-        <li>{props.locationAndDetails.address}</li>
-        <li>
+      <StyledDivParent>
+        <StyledDivChild>{props.locationAndDetails.address}</StyledDivChild>
+        <StyledDivChild>
           {props.locationAndDetails.day}, {props.locationAndDetails.time}
-        </li>
-        <li>{props.locationAndDetails.description}</li>
-      </StyledUl>
+        </StyledDivChild>
+        <StyledDivChild>{props.locationAndDetails.description}</StyledDivChild>
+      </StyledDivParent>
     );
   } else {
     return <LocationAndDetailsSkeletonLoader />;

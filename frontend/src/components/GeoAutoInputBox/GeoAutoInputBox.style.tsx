@@ -14,8 +14,10 @@ export const ContainerDiv = styled.div<{ width: string }>`
 `;
 
 export const Input = styled.input`
+  box-sizing: border-box;
   width: inherit;
-  font-size: 0.75rem;
+  font-size: 0.7rem;
+  height: 1.5rem;
   transition: border 0.1s ease-in-out;
   padding: 0.3rem 0.5rem;
   border: 0.1rem solid #5cdb95bc;
@@ -35,7 +37,7 @@ export const FlexColumnSuggestionListDiv = styled.div`
   flex-direction: column;
   overflow: hidden scroll;
   font-size: 0.8rem;
-  color: rgb(255, 255, 255, 0.70);
+  color: rgb(255, 255, 255, 0.7);
   max-height: 5rem;
   width: inherit;
   gap: 0;
