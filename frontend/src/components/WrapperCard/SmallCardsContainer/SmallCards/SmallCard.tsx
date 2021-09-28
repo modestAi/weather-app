@@ -25,7 +25,6 @@ const SmallCard: React.FC<SmallCardProps> = ({
   onClickHandler,
   selectedCard,
 }): JSX.Element => {
-  
   const { preferredUnit } = usePreferred();
 
   let resultMaxTemp = getPreferredUnitTemp(maxTemp, preferredUnit);
@@ -43,7 +42,7 @@ const SmallCard: React.FC<SmallCardProps> = ({
         <RawFlexDiv>
           <CenteredPara>{day.substring(0, 3)}</CenteredPara>
           <div>
-            <Image src={icon} alt="None" />
+            <Image src={icon} alt="https://icon-library.com/images/please-wait-icon/please-wait-icon-8.jpg" />
           </div>
         </RawFlexDiv>
         <NoWrapDiv>

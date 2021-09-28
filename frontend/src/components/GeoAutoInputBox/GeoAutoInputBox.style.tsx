@@ -18,6 +18,7 @@ export const Input = styled.input`
   width: inherit;
   font-size: 0.7rem;
   height: 1.5rem;
+  color: rgb(255, 255, 255, 0.7);
   transition: border 0.1s ease-in-out;
   padding: 0.3rem 0.5rem;
   border: 0.1rem solid #5cdb95bc;

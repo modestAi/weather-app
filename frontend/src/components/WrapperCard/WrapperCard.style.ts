@@ -17,7 +17,7 @@ export const MiddleDiv = styled.div`
   background-color: hsla(360, 100%, 100%, 2%);
   margin: 0.5rem;
   box-shadow: #03dac5 -2px -3px 1px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-`
+`;
 
 export const OutermostDiv = styled.div`
   display: flex;
@@ -27,9 +27,11 @@ export const OutermostDiv = styled.div`
   background-color: hsla(360, 100%, 100%, 1%);
   margin: 2rem;
   box-shadow: #5cdb95 -4px 3px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
-`
+`;
 
 export const FlexDiv = styled.div`
+  color: rgb(255, 255, 255, 0.87);
+
   align-items: center;
   display: flex;
   flex-direction: column;
