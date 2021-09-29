@@ -1,8 +1,8 @@
-import { AnchorTag, HeartIcon, Paragraph, Section } from "./Footer.style";
+import { AnchorTag, HeartIcon, Paragraph, FooterDiv } from "./Footer.style";
 
 const Footer = ():JSX.Element => {
   return (
-    <Section>
+    <FooterDiv>
       <Paragraph>
         Made with {HeartIcon()} by
         <AnchorTag target="_blank" href="https://github.com/modestAi">
@@ -10,7 +10,7 @@ const Footer = ():JSX.Element => {
           The modest Ai
         </AnchorTag>
       </Paragraph>
-    </Section>
+    </FooterDiv>
   );
 };
 

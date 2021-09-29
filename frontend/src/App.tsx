@@ -1,17 +1,18 @@
 import Footer from "./components/Footer/Footer";
 import WrapperCard from "./components/WrapperCard/index";
-import { FlexDiv } from "./styles/App.style";
+import { WrapperFlexDiv } from "./styles/App.style";
 import { GlobalStyle } from "./styles/Global.style";
 
-function App() {
+const App = () => {
   return (
-    <div>
+    <>
       <GlobalStyle />
-      <FlexDiv>
+      <WrapperFlexDiv>
         <WrapperCard />
-      </FlexDiv>
-    </div>
+        <Footer />
+      </WrapperFlexDiv>
+    </>
   );
-}
+};
 
 export default App;

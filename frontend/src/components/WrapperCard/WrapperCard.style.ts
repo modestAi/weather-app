@@ -31,10 +31,9 @@ export const OutermostDiv = styled.div`
 
 export const FlexDiv = styled.div`
   color: rgb(255, 255, 255, 0.87);
-
   align-items: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  position: fixed;
+  margin-top: 5%;
 `;
