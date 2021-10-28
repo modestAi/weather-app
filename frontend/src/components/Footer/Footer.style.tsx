@@ -7,7 +7,7 @@ export const FooterDiv = styled.div`
   font-weight: 400;
   color: rgb(255, 255, 255, 0.6);
   margin-top: auto;
-  font-size: 1rem;
+  font-size: 0.7rem;
 `;
 
 export const Paragraph = styled.p`
@@ -36,11 +36,11 @@ export const AnchorTag = styled.a`
     content: "";
     position: absolute;
     width: 0;
-    height: 2px;
+    height: 1px;
     bottom: 0;
-    left: 5px;
+    left: 2px;
     background-color: white;
-    box-shadow: white 0px -3px 50px 1px;
+    box-shadow: white 0px -3px 25px 1px;
     visibility: hidden;
     transition: all 0.3s ease-in-out;
   }
@@ -48,7 +48,7 @@ export const AnchorTag = styled.a`
 
 export const HeartIcon = () => {
   return (
-    <IconContext.Provider value={{ color: "#da4b6f" }}>
+    <IconContext.Provider value={{ color: "#da4b6f", size:"0.7rem"}}>
       <AiFillHeart />
     </IconContext.Provider>
   );

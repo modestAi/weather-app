@@ -22,7 +22,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
   const inputRef = useRef<HTMLInputElement | null>(null);
   const wrapperDivRef = useRef<HTMLInputElement | null>(null); // wrap = wrapperRef.current
 
-  useEffect(() => {
+  useEffect(() =>{
     window.addEventListener("mousedown", handleClickOutside);
     return () => window.removeEventListener("mousedown", handleClickOutside);
   });

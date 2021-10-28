@@ -1,16 +1,22 @@
-import Footer from "./components/Footer/Footer";
-import WrapperCard from "./components/WrapperCard/index";
-import { WrapperFlexDiv } from "./styles/App.style";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
+import HomePage from "./pages/HomePage";
 import { GlobalStyle } from "./styles/Global.style";
+import { BrowserRouter as Router, Switch, Route} from "react-router-dom";
 
 const App = () => {
   return (
     <>
-      <GlobalStyle />
-      <WrapperFlexDiv>
-        <WrapperCard />
-        <Footer />
-      </WrapperFlexDiv>
+      <Router>
+        <Switch>
+          <Route exact path="/">
+            <HomePage />
+          </Route>
+          <Route>
+            <PageNotFound />
+          </Route>
+        </Switch>
+        <GlobalStyle />
+      </Router>
     </>
   );
 };
