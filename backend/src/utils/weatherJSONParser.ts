@@ -38,7 +38,7 @@ const parseWeekly = (weeklyData: WeeklyWeather[]): WeatherReport[] => {
       humidity: val.humidity,
       windSpeed: val.wind_speed,
       temperature: val.temp.max,
-      image: `http://openweathermap.org/img/w/${val.weather[0].icon}.png`,
+      image: `http://openweathermap.org/img/wn/${val.weather[0].icon}.png`,
       description: getCapitalizedString(val.weather[0].description),
       maxTemp: val.temp.max,
       minTemp: val.temp.min,
