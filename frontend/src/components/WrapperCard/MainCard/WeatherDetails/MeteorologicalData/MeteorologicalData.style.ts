@@ -10,6 +10,8 @@ export const StyledDiv = styled.div`
 export const StyledChildDiv = styled.div`
   color: rgb(255, 255, 255, 0.65);
   width: 6rem;
+  display: block;
   font-size: 0.7rem;
-  font-weight: lighter;
+  min-width: 7rem;
+  max-width: 7rem;
 `;

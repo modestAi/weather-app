@@ -30,15 +30,11 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = (props): JSX.Element => {
   const { preferredUnit, setPreferredUnit } = usePreferred();
 
   const setToMetric = () => {
-    if (preferredUnit !== "metric") {
-      setPreferredUnit("metric");
-    }
+    if (preferredUnit !== "metric") setPreferredUnit("metric");
   };
 
   const setToImperial = () => {
-    if (preferredUnit !== "imperial") {
-      setPreferredUnit("imperial");
-    }
+    if (preferredUnit !== "imperial") setPreferredUnit("imperial");
   };
   if (!shouldShimmer) {
     return (
@@ -49,9 +45,7 @@ const WeatherDetails: React.FC<WeatherDetailsProps> = (props): JSX.Element => {
               <InlineImg src={props.data.image} alt="None" />
             </div>
             <div>
-              <TempPara>
-                {preferredUnit === "metric" ? Math.trunc(temperature) : Math.trunc(toFahrenheit(temperature))}
-              </TempPara>
+              <TempPara>{preferredUnit === "metric" ? Math.trunc(temperature) : Math.trunc(toFahrenheit(temperature))}</TempPara>
             </div>
             <FlexDiv>
               <TransparentButton onClick={setToMetric} isSelected={preferredUnit === "metric"}>

@@ -6,8 +6,8 @@ export const FlexDiv = styled.div`
   width: inherit;
 `;
 
-export const ContainerDiv = styled.div<{ width: string }>`
-  width: ${(props) => props.width};
+export const ContainerDiv = styled.div`
+  width: 30rem;
   display: flex;
   position: relative;
   flex-direction: column;

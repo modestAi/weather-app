@@ -19,11 +19,16 @@ export const InlineImg = styled.img`
 `;
 
 export const TempPara = styled.p`
-  display: inline;
+
+  display: inline-block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.5rem;
-  width: 2.5rem;
-  height: 2.5rem;  
+  min-width: 3rem;
+  height: 2.5rem;
 `;
+
 export const FlexDiv = styled.div`
   display: flex;
   align-items: center;

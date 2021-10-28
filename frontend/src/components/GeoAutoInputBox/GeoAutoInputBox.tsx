@@ -5,11 +5,11 @@ import SuggestionDiv from "./SuggestionDiv/index";
 
 type Result = AddressType[];
 
-type NewLocationFunction =   (Address: AddressType) => void ;
+type NewLocationFunction = (Address: AddressType) => void;
 
-type GeoAutoInputBoxProps = Partial<AddressType> & {onNewLocation: NewLocationFunction};
+type GeoAutoInputBoxProps = Partial<AddressType> & { onNewLocation: NewLocationFunction };
 
-const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.Element => {
+const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation }): JSX.Element => {
   const [selectedSuggestionIndexState, setSelectedSuggestionIndexState] = useState<{ num: number } | null>(null);
   const [suggestionsState, setSuggestionsState] = useState<{ placesAndCoordinates: Result } | null>(null);
   const [displayState, setDisplayState] = useState(false);
@@ -22,14 +22,13 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
   const inputRef = useRef<HTMLInputElement | null>(null);
   const wrapperDivRef = useRef<HTMLInputElement | null>(null); // wrap = wrapperRef.current
 
-  useEffect(() =>{
+  useEffect(() => {
     window.addEventListener("mousedown", handleClickOutside);
     return () => window.removeEventListener("mousedown", handleClickOutside);
   });
 
   useEffect(() => {
-    if (suggestionsState && !shouldMakeReqState && highlightState >= 0)
-      setInputTextState(suggestionsState.placesAndCoordinates[highlightState].placeName);
+    if (suggestionsState && !shouldMakeReqState && highlightState >= 0) setInputTextState(suggestionsState.placesAndCoordinates[highlightState].placeName);
   }, [highlightState]);
 
   useEffect(() => {
@@ -50,7 +49,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
       setInputTextState(() => suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName);
       const coordinates = suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].coordinates;
       const placeName = suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName;
-      onNewLocation({coordinates, placeName});
+      onNewLocation({ coordinates, placeName });
     }
   }, [selectedSuggestionIndexState]);
 
@@ -76,9 +75,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
       case "ArrowUp":
         if (shouldMakeReqState) setShouldMakeReqState(() => false);
         if (selectedSuggestionIndexState && suggestionsState) {
-          setLastSelectedTextState(
-            () => suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName
-          );
+          setLastSelectedTextState(() => suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName);
         }
         if (suggestionsState && displayState && highlightState > -1) {
           const maxSuggestionArrayIndex = suggestionsState.placesAndCoordinates.length;
@@ -89,9 +86,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
       case "ArrowDown":
         if (shouldMakeReqState) setShouldMakeReqState(() => false);
         if (selectedSuggestionIndexState && suggestionsState)
-          setLastSelectedTextState(
-            () => suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName
-          );
+          setLastSelectedTextState(() => suggestionsState.placesAndCoordinates[selectedSuggestionIndexState.num].placeName);
         if (displayState && suggestionsState && highlightState > -1) {
           const maxSuggestionArrayIndex = suggestionsState.placesAndCoordinates.length;
           if (highlightState !== maxSuggestionArrayIndex - 1) setHighlightState(highlightState + 1);
@@ -99,8 +94,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
         } else setHighlightState(0);
         break;
       case "Enter":
-        if (displayState && suggestionsState && highlightState >= 0)
-          setSelectedSuggestionIndexState({ num: highlightState });
+        if (displayState && suggestionsState && highlightState >= 0) setSelectedSuggestionIndexState({ num: highlightState });
         break;
       case "Escape":
         setDisplayOnEscapeState(true);
@@ -117,7 +111,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
   };
 
   return (
-    <ContainerDiv width={"60vw"} ref={wrapperDivRef}>
+    <ContainerDiv ref={wrapperDivRef}>
       <FlexDiv>
         <Input
           onKeyDown={handleKeyPress}
@@ -136,13 +130,7 @@ const GeoAutoInputBox: React.FC<GeoAutoInputBoxProps> = ({ onNewLocation}): JSX.
         {displayState &&
           suggestionsState?.placesAndCoordinates &&
           suggestionsState.placesAndCoordinates.map((e, i) => (
-            <SuggestionDiv
-              index={i}
-              isHighlighted={highlightState}
-              placeName={e.placeName}
-              key={i + e.placeName}
-              onClickHandler={handleSuggestionClick}
-            />
+            <SuggestionDiv index={i} isHighlighted={highlightState} placeName={e.placeName} key={i + e.placeName} onClickHandler={handleSuggestionClick} />
           ))}
       </FlexColumnSuggestionListDiv>
     </ContainerDiv>

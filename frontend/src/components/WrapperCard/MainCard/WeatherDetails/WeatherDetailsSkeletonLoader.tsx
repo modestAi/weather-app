@@ -12,7 +12,7 @@ const WeatherDetailsSkeletonLoader: React.FC = (): JSX.Element => {
             <SkeletonLoader height={"2.5rem"} width={"2.5rem"} isCircle={true} />
           </div>
           <div>
-            <SkeletonLoader height={"2.5rem"} width={"2.5rem"} />
+            <SkeletonLoader height={"2.5rem"} width={"3rem"} />
           </div>
           <FlexDiv>
             <SkeletonLoader height={"1.5rem"} width={"3rem"} borderRadius={"2px"} />
