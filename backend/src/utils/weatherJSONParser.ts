@@ -23,7 +23,7 @@ const parseCurrent = (current: CurrentWeather, weeklyData: WeatherReport[]): Wea
     humidity: current.humidity,
     windSpeed: current.wind_speed,
     temperature: current.temp,
-    image: `http://openweathermap.org/img/w/${current.weather[0].icon}.png`,
+    image: `http://openweathermap.org/img/wn/${current.weather[0].icon}.png`,
     description: getCapitalizedString(current.weather[0].description),
     maxTemp: weeklyData[0].maxTemp,
     minTemp: weeklyData[0].minTemp,
